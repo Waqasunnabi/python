@@ -1,0 +1,23 @@
+import speech_recognition as sr
+from translatepy import Translator
+
+translator = Translator()
+r = sr.Recognizer()
+mic = sr.Microphone()
+
+print("Listening...")
+
+with mic as source:
+    r.adjust_for_ambient_noise(source)
+    audio = r.listen(source)
+    try:
+        english_text = r.recognize_google(audio)
+        print(f"Transcribed text: {english_text}")
+
+        urdu_text = translator.translate(english_text, "ur")
+        print(f"Translated text: {urdu_text.result}")
+
+    except sr.UnknownValueError:
+        print("Sorry, could not understand audio.")
+    except sr.RequestError as e:
+        print(f"Could not request results from Google Speech Recognition service: {e}")
