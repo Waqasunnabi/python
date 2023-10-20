@@ -5,7 +5,7 @@ import pandas as pd
 import tkinter as tk
 from tkinter import filedialog, messagebox, scrolledtext, ttk
 
-
+    
 animation = ["  ◜   ", "  ◝   ", "  ◞   ", "  ◟   "]
 animation_index = 0
 filesname = ["0"]
@@ -181,7 +181,7 @@ def findvalue():
         total_loops = len(all_files) + len(lines)
         progress_bar.config(maximum=total_loops)
 
-        total_execution_time = 0
+        total_execution_time = 0    
 
         for idx, filename in enumerate(all_files):
             if stop_search.get():
